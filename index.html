@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENVI TEAM | Record Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav>
+        <h1>ENVI TEAM</h1>
+        <div id="nav-links"></div>
+    </nav>
+
+    <div class="container">
+        <section id="login-section" class="card">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <select id="role">
+                <option value="admin">Admin</option>
+                <option value="scrap1">Scrap 1</option>
+                <option value="scrap2">Scrap 2</option>
+                <option value="waste">Waste Hazard</option>
+            </select>
+            <button onclick="login()">Login</button>
+        </section>
+
+        <section id="admin-dashboard" class="hidden">
+            <h2>Admin Dashboard</h2>
+            <div class="stats-grid">
+                <canvas id="monthlyChart"></canvas>
+            </div>
+            <h3>Recent Records</h3>
+            <table id="admin-table">
+                <thead>
+                    <tr><th>Date</th><th>User</th><th>Type</th><th>Qty</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="admin-users" class="hidden">
+            <h2>User Management</h2>
+            <table id="user-table">
+                <thead>
+                    <tr><th>Username</th><th>Role</th><th>Status</th><th>Actions</th></tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+
+        <section id="user-add-scrap" class="hidden">
+            <h2>Add Scrap Record</h2>
+            <form id="scrap-form">
+                <input type="date" id="date" required>
+                <input type="text" id="personnel" placeholder="Assign Personnel" required>
+                <input type="number" id="qty" placeholder="Bilang ng Scrap" required>
+                <select id="scrap-type">
+                    <option value="Garbage">Garbage</option>
+                    <option value="Carton">Carton</option>
+                    <option value="Waste Pallet">Waste Pallet</option>
+                    <option value="Pallet">Pallet</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section id="user-view-scrap" class="hidden">
+            <h2>View & Edit Scrap</h2>
+            <table id="records-table">
+                <thead>
+                    <tr><th>Date</th><th>Personnel</th><th>Type</th><th>Qty</th><th>Action</th></tr>
+                </thead>
+                <tbody id="scrap-list"></tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
