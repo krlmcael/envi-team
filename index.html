@@ -3,51 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENVI TEAM | Record Management</title>
+    <title>ENVI TEAM | Yamaha Record System</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav>
-        <h1>ENVI TEAM</h1>
+        <div class="logo-area">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Yamaha_Motor_Logo.svg" alt="Yamaha Logo" width="120">
+            <span class="brand-name">ENVI TEAM</span>
+        </div>
         <div id="nav-links"></div>
+        <button id="logout-btn" class="hidden" onclick="logout()">Logout</button>
     </nav>
 
     <div class="container">
         <section id="login-section" class="card">
-            <h2>Login</h2>
-            <input type="text" id="username" placeholder="Username">
-            <select id="role">
-                <option value="admin">Admin</option>
-                <option value="scrap1">Scrap 1</option>
-                <option value="scrap2">Scrap 2</option>
-                <option value="waste">Waste Hazard</option>
-            </select>
-            <button onclick="login()">Login</button>
+            <h2 style="color: #00205B;">System Login</h2>
+            <input type="text" id="login-user" placeholder="Username">
+            <input type="password" id="login-pass" placeholder="Password">
+            <button class="btn-primary" onclick="login()">Sign In</button>
         </section>
 
         <section id="admin-dashboard" class="hidden">
-            <h2>Admin Dashboard</h2>
-            <div class="stats-grid">
+            <h2>Admin Analytics Dashboard</h2>
+            <div class="chart-container">
                 <canvas id="monthlyChart"></canvas>
             </div>
-            <h3>Recent Records</h3>
-            <table id="admin-table">
-                <thead>
-                    <tr><th>Date</th><th>User</th><th>Type</th><th>Qty</th></tr>
-                </thead>
-                <tbody></tbody>
-            </table>
         </section>
 
         <section id="admin-users" class="hidden">
             <h2>User Management</h2>
+            <div class="add-user-form">
+                <input type="text" id="new-user" placeholder="Full Name">
+                <input type="text" id="new-username" placeholder="Username">
+                <select id="new-role">
+                    <option value="scrap1">Scrap 1</option>
+                    <option value="scrap2">Scrap 2</option>
+                    <option value="waste">Waste Hazard</option>
+                </select>
+                <button class="btn-primary" onclick="addUser()">Create Account</button>
+            </div>
             <table id="user-table">
                 <thead>
-                    <tr><th>Username</th><th>Role</th><th>Status</th><th>Actions</th></tr>
+                    <tr><th>Name</th><th>Role</th><th>Status</th><th>Actions</th></tr>
                 </thead>
-                <tbody>
-                    </tbody>
+                <tbody id="user-list-body"></tbody>
             </table>
         </section>
 
@@ -63,15 +64,15 @@
                     <option value="Waste Pallet">Waste Pallet</option>
                     <option value="Pallet">Pallet</option>
                 </select>
-                <button type="submit">Submit</button>
+                <button type="submit" class="btn-primary">Submit Record</button>
             </form>
         </section>
 
         <section id="user-view-scrap" class="hidden">
-            <h2>View & Edit Scrap</h2>
+            <h2>My Scrap Records</h2>
             <table id="records-table">
                 <thead>
-                    <tr><th>Date</th><th>Personnel</th><th>Type</th><th>Qty</th><th>Action</th></tr>
+                    <tr><th>Date</th><th>Personnel</th><th>Type</th><th>Qty</th><th>Actions</th></tr>
                 </thead>
                 <tbody id="scrap-list"></tbody>
             </table>
